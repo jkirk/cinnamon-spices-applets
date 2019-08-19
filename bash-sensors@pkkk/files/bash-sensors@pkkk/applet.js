@@ -86,6 +86,11 @@ MyApplet.prototype = {
     },
 
     update_cmd1: function (cmd_output) {
+        if (cmd_output.toString().length == 0) {
+            this.actor.style_class = null;
+        } else {
+            this.actor.style_class = 'running';
+        }
         this.labels[0] = cmd_output.toString().replace(/\n/g, "").substring(0, 50).trimRight();
         if (this.script2 && this.script2.trim() && this.enableScript2) {
             this.set_applet_label(this.labels.join('\n'));
